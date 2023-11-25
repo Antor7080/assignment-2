@@ -7,8 +7,8 @@ const errorHandler = (
     next: NextFunction,
 ) => {
     const statusCode = err.code || 500;
-    const message = err.description || 'Something went wrong!';
-
+    const message = err.description ||err.message || 'Something went wrong!';
+console.log(err);
     return res.status(statusCode).json({
         success: false,
         message,

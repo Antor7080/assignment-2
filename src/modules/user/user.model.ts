@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import mongoose, { Schema } from 'mongoose';
-import { IOrder, IUser } from './user.interface';
+import { IOrder, IUser, UserModel } from './user.interface';
 
 const orderScehma = new Schema<IOrder>({
     productName: {
@@ -16,7 +16,7 @@ const orderScehma = new Schema<IOrder>({
         required: [true, 'Quantity is required in the order'],
     },
 })
-const userSchema = new Schema<IUser>({
+const userSchema = new Schema<IUser, UserModel>({
     userId: {
         type: Number,
         required: [true, 'User ID is required'],
@@ -101,6 +101,6 @@ userSchema.pre<IUser>('save', async function (next) {
     }
 });
 
-const User = mongoose.model<IUser>('User', userSchema);
+const User = mongoose.model<IUser, UserModel>('User', userSchema);
 
 export{ User};
