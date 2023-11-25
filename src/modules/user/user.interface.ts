@@ -17,6 +17,7 @@ interface IFullName {
     lastName: string;
 }
 interface IUser {
+    
     userId: number;
     username: string;
     password: string;

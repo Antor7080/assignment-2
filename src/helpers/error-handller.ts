@@ -6,13 +6,17 @@ const errorHandler = (
     res: Response,
     next: NextFunction,
 ) => {
-    const statusCode = err.code || 500;
-    const message = err.description ||err.message || 'Something went wrong!';
-console.log(err);
+    const statusCode = err.message.includes('User not found') ? 404 : err.code || 500
+  
+    const message = err.description || err.message || 'Something went wrong!';
+    console.log(err);
     return res.status(statusCode).json({
         success: false,
         message,
-        error: err,
+        error: {
+            code: statusCode,
+            description: message,
+        },
     });
 };
 

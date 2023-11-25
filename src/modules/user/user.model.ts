@@ -15,6 +15,7 @@ const orderScehma = new Schema<IOrder>({
         type: Number,
         required: [true, 'Quantity is required in the order'],
     },
+  
 })
 const userSchema = new Schema<IUser, UserModel>({
     userId: {
@@ -76,10 +77,7 @@ const userSchema = new Schema<IUser, UserModel>({
             required: [true, 'Country is required'],
         },
     },
-    orders: [{
-        type: orderScehma,
-
-    }]
+    orders: [ orderScehma]
 });
 userSchema.statics.isUserExist = async function (
     userId: number
@@ -101,6 +99,29 @@ userSchema.pre<IUser>('save', async function (next) {
     }
 });
 
+// this section is for changing the password, if requset.body contain password
+userSchema.pre('findOneAndUpdate', async function (next) {
+    const update: any = this.getUpdate();
+    const password = update.$set && update.$set.password;
+
+    if (!password) {
+        return next();
+    }
+
+    const saltRounds = 10;
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        // Update the hashed password in the document
+        this.set('password', hashedPassword);
+        next();
+    } catch (error: any) {
+        return next(error);
+    }
+});
+
+
 const User = mongoose.model<IUser, UserModel>('User', userSchema);
 
-export{ User};
+export { User };
+
