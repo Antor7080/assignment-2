@@ -1,10 +1,10 @@
-import * as dotenv from 'dotenv';
+// import * as dotenv from 'dotenv';
 
-// Load environment variables from .env file
-dotenv.config();
+// // Load environment variables from .env file
+// dotenv.config();
 const config = {
-    database_url: process.env.URL,
-    port: process.env.PORT
+    database_url: "mongodb+srv://sbexpress:Antor007@cluster0.p0mef.mongodb.net/assignment_2_apollow",
+    port:5000
 }
 
 export { config };
