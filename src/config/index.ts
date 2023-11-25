@@ -1,10 +1,13 @@
-// import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
+import path from 'path';
 
-// // Load environment variables from .env file
-// dotenv.config();
+dotenv.config({
+  path: path.join(process.cwd(), '.env'),
+});
+
 const config = {
-    database_url: "mongodb+srv://sbexpress:Antor007@cluster0.p0mef.mongodb.net/assignment_2_apollow",
-    port:5000
+    database_url: process.env.URL,
+    port: process.env.PORT
 }
 
 export { config };
