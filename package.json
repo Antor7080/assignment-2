@@ -1,0 +1,30 @@
+{
+  "name": "assignment_2",
+  "version": "1.0.0",
+  "description": " simple node application for curd operation",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antor7080/assignment-2.git"
+  },
+  "keywords": [
+    "javascripts",
+    "typescripts",
+    "node",
+    "express",
+    "mongoDB",
+    "mongoose",
+    "js",
+    "ts",
+    "curd"
+  ],
+  "author": "Jahid Hasan Antor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Antor7080/assignment-2/issues"
+  },
+  "homepage": "https://github.com/Antor7080/assignment-2#readme"
+}
