@@ -13,7 +13,7 @@ const validationHandler = (validationSchema: IValidationSchema) => {
 
       Object.keys(validationSchema)?.map((key: string) => {
         const schema = validationSchema.body
-        const reqData= req.body;
+        const reqData = req.body;
 
         if (schema && reqData) {
           const { error } = schema.validate(reqData, {
@@ -41,9 +41,8 @@ const validationHandler = (validationSchema: IValidationSchema) => {
       // check the error exist or not
       if (errorExist) {
         return res.status(422).send({
-          success: false,
-          errors: errorMessages,
-          message: "Validation Error!",
+          success: false, message: "Validation Error!",
+          error: { description: errorMessages.body, code: 422 },
         });
       }
 
@@ -55,3 +54,4 @@ const validationHandler = (validationSchema: IValidationSchema) => {
 };
 
 export { validationHandler };
+

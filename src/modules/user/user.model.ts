@@ -40,7 +40,6 @@ const userSchema = new Schema<IUser>({
             type: String,
             required: [true, 'Last name is required'],
         },
-        required: [true, 'Name is required'],
     },
     age: {
         type: Number,
@@ -76,7 +75,6 @@ const userSchema = new Schema<IUser>({
             type: String,
             required: [true, 'Country is required'],
         },
-        required: [true, 'Address is required'],
     },
     orders: [{
         type: orderScehma,
