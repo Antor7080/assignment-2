@@ -1,5 +1,6 @@
-dist
-.env
+# dist
+# .env
 node_modules
+*zip
 
 
